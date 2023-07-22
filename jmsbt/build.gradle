@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'org.aphronatus'
+archivesBaseName = 'jmsbt'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    // yaml jackson dependency
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.15.2"
+
+    // apache commons cli
+    implementation 'commons-cli:commons-cli:1.4'
+
+    // spock
+    testImplementation "org.spockframework:spock-core"
+    testImplementation platform("org.spockframework:spock-bom:2.3-groovy-4.0")
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'org.aphronatus'
+            artifactId = 'jmsbt'
+            version = '1.1-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.aphronatus.msbt.Main'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
