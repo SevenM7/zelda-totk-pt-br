@@ -40,3 +40,5 @@ Estamos abertos para colaborações! Agradecemos qualquer tipo de contribuição
 ## Download da tradução <a name="download-da-tradução"></a>
 
 A versão mais recente da tradução pode ser baixada clicando [aqui](build/Mod%20-%20PT-BR%20Tradução.zip).
+
+Obs: Para usar a tradução é necessario instalar o mod e muda a região do seu console para a Europa e selecionar o idioma Francês.
